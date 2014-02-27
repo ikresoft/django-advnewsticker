@@ -1,0 +1,25 @@
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% addtoblock "css" %}
+
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script src="{% static "advnewsticker/js/jquery.newsTicker.js" %}" type="text/javascript"></script>
+{% endaddtoblock %}
+
+{% if posts %}
+
+<ul id="newsticker">
+	{% for post in posts %}
+	<li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
+
+<script type="text/javascript">
+    $(function () {
+        $('#newsticker').ticker();
+    });
+</script>
+{% endif %}
